@@ -239,3 +239,50 @@ def mostrar_compatibles(pacientes:list[object],paciente:object):
 def mostrar_paciente(paciente:object):
     print(f"| {paciente.nombre:<10} | {paciente.apellido:<12} | {paciente.edad:<6} | {paciente.altura:<7} cm | {paciente.peso:<6}kg | {paciente.dni:08} | {paciente.grupo_sanguineo:<20}|")
     print("***")
+    
+def calcular_imc(paciente):
+    altura_metros = paciente.altura / 100  
+    return paciente.peso / (altura_metros ** 2)
+
+def obtener_matriz(pacientes):
+    grupos_sanguineos = {
+        'A+': [],
+        'A-': [],
+        'B+': [],
+        'B-': [],
+        'AB+': [],
+        'AB-': [],
+        '0+': [],
+        '0-': []
+    }
+    
+    
+    for paciente in pacientes:
+        grupos_sanguineos[paciente.grupo_sanguineo].append(paciente)
+    
+    matriz = []
+    
+    for grupo, pacientes_grupo in grupos_sanguineos.items():
+        if pacientes_grupo:
+            alturas = [p.altura for p in pacientes_grupo]
+            edades = [p.edad for p in pacientes_grupo]
+            imcs = [calcular_imc(p) for p in pacientes_grupo]
+            
+            altura_promedio = sum(alturas) / len(alturas)
+            edad_maxima = max(edades)
+            imc_promedio = sum(imcs) / len(imcs)
+            
+            matriz.append([grupo, altura_promedio, edad_maxima, imc_promedio])
+        else:
+            matriz.append([grupo, 0, 0, 0])
+    
+    return matriz
+
+def mostrar_matriz(matriz):
+    print("***************************************************************")
+    print("| Grupo Sanguíneo | Altura Promedio | Edad Máxima | IMC Promedio |")
+    print("---------------------------------------------------------------")
+    for fila in matriz:
+        grupo, altura_promedio, edad_maxima, imc_promedio = fila
+        print(f"| {grupo:<15} | {altura_promedio:<15.2f} cm | {edad_maxima:<11} | {imc_promedio:<11.2f} |")
+    print("***************************************************************")
