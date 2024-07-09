@@ -1,0 +1,8 @@
+A+ Usted puede donar a A+ AB+  y puede recibir 0+ 0- A+ A-
+A- Usted puede donar A+ A- AB+ AB- y puede recibir 0- A-
+B+ Usted puede donar B+ AB+ y puede recibir 0+0-B+B-
+B- Usted puede donar B+ B-  AB+ AB- y puede recibir 0- B-
+AB+ Usted puede donar AB+ y puede recibir A+ A- B+ B- AB+ AB- O+ O-
+AB- Usted puede donar AB+ AB- y puede recibir AB- 0- A- B-
+0+ Usted puede donar A+ B+ AB+ 0+ y puede recibir 0+ 0-
+0- Usted puede donar A+ A- B+ B- AB+ AB- O+ O-  y puede recibir 0-
